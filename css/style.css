@@ -5,3 +5,11 @@
 .sx_br {
   border-left: 1px solid black;
 }
+
+.ms_done {
+  text-decoration: line-through;
+}
+
+li.list-group-item div {
+  padding: 1rem;
+}

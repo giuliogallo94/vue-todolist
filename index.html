@@ -21,16 +21,20 @@
               <div class="col">
                 <h2>To-Do</h2>
                 <ul class="list-group">
-                    <li v-for="(value, index) in toDo" class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value=""  @click="sendToDone(index)" id="firstCheckbox">
-                      <label class="form-check-label" for="firstCheckbox">{{ value }}</label>
+                    <li v-for="(value, index) in items" class="list-group-item p-0">
+                        <div v-if="value.done === false">
+                            <input class="form-check-input me-1" type="checkbox" value="{{ value }}"  @click="items[index].done = !items[index].done" :id="index">
+                            <label class="form-check-label">{{ value.text }}</label>
+                        </div>
                     </li>
               </div>
               <div class="col"><h2>Done</h2>
                 <ul class="list-group">
-                    <li v-for="(value, index) in done" class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                      <label class="form-check-label" for="firstCheckbox">{{ value }}</label>
+                    <li v-for="(value, index) in items" class="list-group-item p-0">
+                        <div v-if="value.done === true">
+                            <input class="form-check-input me-1" type="checkbox" value="" :id="index" @click="items[index].done = !items[index].done">
+                            <label class="form-check-label ms_done" :for="index" @click="deleteItem(index)" >{{ value.text }}</label>
+                        </div>
                     </li>
             </div>
             </div>
