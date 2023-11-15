@@ -10,30 +10,34 @@ const app = createApp({
         },
         {
           text: "Leggere",
-          done: true,
+          done: false,
         },
         {
           text: "Dentista",
-          done: true,
+          done: false,
         },
         {
           text: "Esercizi",
           done: false,
         },
         {
-          text: "aaa",
+          text: "Spesa",
           done: false,
         },
         {
-          text: "bbb",
-          done: true,
+          text: "Lavare macchina",
+          done: false,
         },
         {
-          text: "ccc",
+          text: "Ritirare merce",
           done: false,
         },
       ],
     };
+  },
+
+  mounted() {
+    setInterval(this.deleteDoneItem, 5000);
   },
 
   methods: {
@@ -54,7 +58,28 @@ const app = createApp({
 
     deleteItem: function (index) {
       this.items.splice(index, 1);
-      console.log(this.items);
+    },
+
+    addItem: function () {
+      let textArea = document.getElementById("txtArea");
+      let value = textArea.value;
+      console.log(value);
+      this.items.push({
+        text: value,
+        done: false,
+      });
+      textArea.value = "";
+    },
+
+    deleteDoneItem: function () {
+      for (i = 0; i < this.items.length; i++) {
+        // console.log(this.items);
+        // console.log(this.items[i]);
+        // console.log(i);
+        if (this.items[i].done === true) {
+          this.items.splice(i, 1);
+        }
+      }
     },
   },
 });

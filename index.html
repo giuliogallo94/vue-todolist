@@ -39,8 +39,14 @@
             </div>
             </div>
           </div>
-          <div class="col-6 text-center p-5 sx_br">
+          <div class="col-6 text-center p-5 d-flex flex-column justify-content-center">
             <h2>Add To-Do</h2>
+            <div class="input-group my-4">
+                <span class="input-group-text " id="inputGroup-sizing-default">ToDo</span>
+                <input type="text" class="form-control" id="txtArea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="" @keyup.enter="addItem">
+
+                <button type="button" class="btn btn-primary" @click="addItem">Add</button>
+              </div>
           </div>
         </div>
       </div>
