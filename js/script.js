@@ -33,6 +33,8 @@ const app = createApp({
           done: false,
         },
       ],
+      newToDo: "",
+      errorVisible: false,
     };
   },
 
@@ -61,14 +63,17 @@ const app = createApp({
     },
 
     addItem: function () {
-      let textArea = document.getElementById("txtArea");
-      let value = textArea.value;
-      console.log(value);
-      this.items.push({
-        text: value,
-        done: false,
-      });
-      textArea.value = "";
+      this.errorVisible = false;
+      if (this.newToDo !== "") {
+        this.items.push({
+          text: this.newToDo,
+          done: false,
+        });
+        this.newToDo = "";
+        this.errorVisible = false;
+      } else {
+        this.errorVisible = true;
+      }
     },
 
     deleteDoneItem: function () {
